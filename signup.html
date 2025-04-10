@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #7f1d1d, #9f685d);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .signup-container {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 16px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 480px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        h1 {
+            color: #1e293b;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            letter-spacing: -0.5px;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            background: #fff;
+            color: #1e293b;
+        }
+
+        .input-group input:focus {
+            border-color: rgba(59, 130, 246, 0.1);
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+        }
+
+        .input-group input::placeholder {
+            color: #94a3b8;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            transition: color 0.2s ease;
+        }
+
+        .input-group input:focus + .input-icon {
+            color: #3b82f6;
+        }
+
+        .error-message {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            display: none;
+            padding-left: 0.5rem;
+            font-weight: 500;
+        }
+
+        button {
+            width: 100%;
+            padding: 1rem;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            background: rgba(59, 130, 246, 0.1);
+            transform: translateY(-1px);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        .input-group.error input {
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.05);
+        }
+
+        .input-group.error .error-message {
+            display: block;
+        }
+
+        .input-group.error .input-icon {
+            color: #ef4444;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-6px); }
+            75% { transform: translateX(6px); }
+        }
+
+        .shake {
+            animation: shake 0.4s ease-in-out;
+        }
+
+        @media (max-width: 480px) {
+            .signup-container {
+                padding: 2rem;
+                margin: 1rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h1>Create Account</h1>
+        <form id="signupForm" novalidate>
+            <div class="input-group">
+                <input type="text" id="username" placeholder="Username" required>
+                <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <div class="error-message">Please enter a username</div>
+            </div>
+           
+            <div class="input-group">
+                <input type="email" id="email" placeholder="Email address" required>
+                <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <div class="error-message">Please enter a valid email address</div>
+            </div>
+           
+            <div class="input-group">
+                <input type="password" id="password" placeholder="Password" required>
+                <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                <div class="error-message">Password must be at least 6 characters with one number</div>
+            </div>
+           
+            <div class="input-group">
+                <input type="password" id="confirmPassword" placeholder="Confirm password" required>
+                <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                <div class="error-message">Passwords do not match</div>
+            </div>
+
+            <button type="submit">Create Account</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+           
+            // Reset all error states
+            document.querySelectorAll('.input-group').forEach(group => {
+                group.classList.remove('error');
+            });
+
+            const username = document.getElementById('username');
+            const email = document.getElementById('email');
+            const password = document.getElementById('password');
+            const confirmPassword = document.getElementById('confirmPassword');
+           
+            let isValid = true;
+
+            // Username validation
+            if (username.value.trim() === '') {
+                showError(username, 'Username is required');
+                isValid = false;
+            }
+
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email.value.trim())) {
+                showError(email, 'Please enter a valid email address');
+                isValid = false;
+            }
+
+            // Password validation
+            const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+            if (!passwordRegex.test(password.value)) {
+                showError(password, 'Password must be at least 6 characters with one number');
+                isValid = false;
+            }
+
+            // Confirm password validation
+            if (password.value !== confirmPassword.value) {
+                showError(confirmPassword, 'Passwords do not match');
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Here you would typically send the form data to your server
+                alert('Sign up successful!');
+                this.reset();
+            }
+        });
+
+        function showError(input, message) {
+            const group = input.closest('.input-group');
+            group.classList.add('error');
+            group.querySelector('.error-message').textContent = message;
+            group.classList.add('shake');
+            setTimeout(() => group.classList.remove('shake'), 400);
+        }
+
+        // Remove error state on input focus
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.closest('.input-group').classList.remove('error');
+            });
+        });
+    </script>
+</body>
+</html>
